@@ -7,6 +7,14 @@ app = Flask(__name__)
 
 import firebase_admin
 from firebase_admin import credentials, firestore
+
+import os
+import json
+
+# 只有在 Vercel 環境執行時才需要這段
+if os.getenv("FIREBASE_KEY"):
+    with open("serviceAccountKey.json", "w") as f:
+        f.write(os.getenv("FIREBASE_KEY"))
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 
