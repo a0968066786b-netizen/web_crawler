@@ -1,0 +1,4 @@
+requests
+bs4
+firebase_admin
+flask
